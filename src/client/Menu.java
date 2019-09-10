@@ -12,23 +12,26 @@ public class Menu {
 	private Locale locale;
 	private ResourceBundle bundle;
 	public Menu() {
-		System.out.println("Velkommen til butikken");
 		running = true;
 		cart = new Cart();
+		Locale engelsk = new Locale("en");
+		bundle = ResourceBundle.getBundle("menu", engelsk);
 		
 	}
 	
 	public static void main(String[] args) {
 		Menu meny = new Menu();
+		
 		meny.locale();
 		meny.start();
 	}
 	
 	private void locale() {
-		System.out.println("Choose language");
-		System.out.println("1) Norwegian");
-		System.out.println("2) English");
-		System.out.println("3) French");
+		System.out.println(bundle.getString("velkommen"));
+		System.out.println(bundle.getString("velgSprak"));
+		System.out.println("1)" + " " + bundle.getString("norsk"));
+		System.out.println("2)" + " " + bundle.getString("engelsk"));
+		System.out.println("3)" + " " + bundle.getString("fransk"));
 		Scanner scanner = new Scanner(System.in);
 		String valg = scanner.nextLine();
 		switch (valg) {
@@ -51,12 +54,12 @@ public class Menu {
 
 	public void start() {
 		while(running) {
-			System.out.println("Velg...");
-			System.out.println("1) Se varer");
-			System.out.println("2) Se handlevogn");
-			System.out.println("3) Tøm handlevogn");
-			System.out.println("4) Avslutt programmet");
-			System.out.print("Ditt valg: ");
+			System.out.println(bundle.getString("velg"));
+			System.out.println("1)" + " " + bundle.getString("seVarer"));
+			System.out.println("2)" + " " + bundle.getString("seHandlevogn"));
+			System.out.println("3)" + " " + bundle.getString("tomHandlevogn"));
+			System.out.println("4)" + " " + bundle.getString("avslutt"));
+			System.out.println(bundle.getString("dittValg"));
 			Scanner scanner = new Scanner(System.in);
 			String valg = scanner.nextLine();
 			switch(valg) {
