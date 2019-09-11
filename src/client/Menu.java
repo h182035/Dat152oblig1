@@ -14,6 +14,7 @@ public class Menu {
 	public Menu() {
 		running = true;
 		cart = new Cart();
+		cart.lesFraFil();
 		Locale engelsk = new Locale("en");
 		bundle = ResourceBundle.getBundle("menu", engelsk);
 		
@@ -21,7 +22,6 @@ public class Menu {
 	
 	public static void main(String[] args) {
 		Menu meny = new Menu();
-		
 		meny.locale();
 		meny.start();
 	}

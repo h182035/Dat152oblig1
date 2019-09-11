@@ -1,6 +1,10 @@
 package objekt;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Cart {
 	private ArrayList<Product> products;
@@ -30,5 +34,20 @@ public class Cart {
 		}
 		
 		System.out.println("----------------");
+	}
+	public void lesFraFil() {
+		Path path = Paths.get("resources/produkter.txt");
+		Scanner scanner;
+		try {
+			scanner = new Scanner(path);
+			while(scanner.hasNext()) {
+				String[] linje = scanner.nextLine().split(":");
+				products.add(new Product(Integer.parseInt(linje[0]), linje[1], new Float(linje[2]), linje[3]));
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
